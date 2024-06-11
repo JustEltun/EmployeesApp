@@ -1,0 +1,37 @@
+@{
+ViewData["Title"] = "Employee Add Page";
+}
+<form method="post">
+    <label>First Name:</label><br />
+    <input type="text" name="firstName" /><br />
+    <label>Last Name:</label><br />
+    <input type="text" name="lastName" /><br />
+    <label>Gender:</label><br />
+    <select name="gender">
+        <option value="true">Male</option>
+        <option value="false">Female</option>
+    </select>
+    <br />
+    <label>Age:</label><br />
+    <input name="age" type="number"/>
+    <br />
+    <label>Department:</label><br />
+    <select name="departmentID">
+        @foreach (var m in Model[0])
+        {
+            <option value="@m.ID">@m.Name</option>    
+        }
+    </select>
+    <br />
+    <br />
+    <label>Programming Language:</label><br />
+    <select name="programmingLangID">
+        @foreach (var m in Model[1])
+        {
+        <option value="@m.ID">@m.Name</option>
+        }
+    </select>
+    <br />
+    <br />
+    <input type="submit" value="Отправить" />
+</form>

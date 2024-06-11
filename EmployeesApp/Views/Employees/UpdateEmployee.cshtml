@@ -1,0 +1,60 @@
+@{
+    ViewData["Title"] = "Employee Edit Page";
+}
+
+<form method="post">
+    <label>First Name:</label><br/>
+    <input type="text" name="firstName" value="@Model[2].FirstName"/><br/>
+    <label>Last Name:</label><br/>
+    <input type="text" name="lastName" value="@Model[2].LastName"/><br/>
+    <label>Gender:</label><br/>
+    <select name="gender">
+        @if (Model[2].Gender)
+        {
+            <option selected value="true">Male</option>
+            <option value="false">Female</option>
+        }
+        else
+        {
+            <option value="true">Male</option>
+            <option selected value="false">Female</option>
+        }
+    </select>
+    <br/>
+    <label>Age:</label><br/>
+    <input name="age" type="number" value="@Model[2].Age"/>
+    <br/>
+    <label>Department:</label><br/>
+    <select name="departmentID">
+        @foreach (var m in Model[0])
+        {
+            if (m.ID == Model[2].Department.ID)
+            {
+                <option selected value="@m.ID">@m.Name</option>
+            }
+            else
+            {
+                <option value="@m.ID">@m.Name</option>
+            }
+        }
+    </select>
+    <br/>
+    <br/>
+    <label>Programming Language:</label><br/>
+    <select name="programmingLangID">
+        @foreach (var m in Model[1])
+        {
+            if (m.ID == Model[2].WorkExperiences[0].ProgrammingLanguage.ID)
+            {
+                <option selected value="@m.ID">@m.Name</option>
+            }
+            else
+            {
+                <option value="@m.ID">@m.Name</option>
+            }
+        }
+    </select>
+    <br/>
+    <br/>
+    <input type="submit" value="Отправить"/>
+</form>
